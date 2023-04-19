@@ -1,0 +1,7 @@
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\bin\Debug\ZadatakZaVijezbu.exe.config
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\bin\Debug\ZadatakZaVijezbu.exe
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\bin\Debug\ZadatakZaVijezbu.pdb
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.csproj.AssemblyReference.cache
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.csproj.CoreCompileInputs.cache
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.exe
+C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.pdb
