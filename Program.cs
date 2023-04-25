@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -199,13 +201,14 @@ namespace ZadatakZaVijezbu
     {
         Teacher teach;
         Dessert desse;
-        Student[] stud;
-        int grade;
+        Student[] stud = new Student[3];
+        int amount=0;
+        float grade;
         internal Teacher Teach { get => teach; set => teach = value; }
         internal Dessert Desse { get => desse; set => desse = value; }
         internal Student[] Stud { get => stud; set => stud = value; }
-        public int Grade { get => grade; set => grade = value; }
-
+        public float Grade { get => grade; set => grade = value; }
+        public int Amount { get => amount; set => amount = value; }
 
         public CompetitionEntry(Teacher T, Dessert D)
         {
@@ -224,20 +227,26 @@ namespace ZadatakZaVijezbu
             }
             if (YN == true)
             {
+                Stud[amount] = S;
                 Grade += G;
+                amount++;
                 return "Radi";
             } else
             {
                 return "Neradi";
             }
         }
-        public int getRating()
+        public float getRating()
         {
-            return (Grade / stud.Length);
+            float g = 0;
+            if (amount != 0) {
+            g = (Grade / amount);
+            }
+            return g;
         }
     }
     public class UniMasterChef {
-        CompetitionEntry[] compEn;
+        CompetitionEntry[] compEn = new CompetitionEntry[2];
         int ceAmont = -1;
 
         public CompetitionEntry[] CompEn { get => compEn; set => compEn = value; }
@@ -261,11 +270,191 @@ namespace ZadatakZaVijezbu
         }
         public Person[] getInvolvedPeople(CompetitionEntry CE)
         {
-            return CE.Stud;
+            Person[] people = new Person[4];
+            people[0] = CE.Teach;
+            int i = 0;
+            foreach (Student s in CE.Stud)
+            {
+                i++;
+                people[i] = s;
+            }
+            return people;
         }
         public UniMasterChef(int Size)
         {
             //
+        }
+    }
+    public class Vehicle
+    {
+        string regNo;
+        string model;
+        int year;
+        double price;
+        double cargoSpace;
+
+        public string RegNo { get => regNo; set => regNo = value; }
+        public string Model { get => model; set => model = value; }
+        public int Year { get => year; set => year = value; }
+        public double Price { get => price; set => price = value; }
+        public double CargoSpace { get => cargoSpace; set => cargoSpace = value; }
+
+        public override string ToString()
+        {
+            return "Vozilo " + Model + " ima regresirani broj: " + RegNo + " i od godine " + Year + " cijena za Vozilo je: " + Price;
+        }
+
+        public Vehicle(string rN, string m, int y, double p, double cS)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            CargoSpace = cS;
+        }
+        public Vehicle() { }
+
+        public double getPricePerDay()
+        {
+            return price * 24;
+        }
+        public double getPricePerMonth() //final
+        {
+            return 30 * getPricePerDay();
+        }
+        public static Vehicle getNewestVehicle(Vehicle[] ve)
+        {
+            Vehicle VeV = ve[0];
+            foreach (Vehicle Ve in ve)
+            {
+                if (Ve.Year > VeV.Year)
+                {
+                    VeV = Ve;
+                }
+            }
+            return VeV;
+        }
+        public static string printAllVehiclesWithCargoSpaceGreaterThan(double p, Vehicle[] ve)
+        {
+            string txt = "Vozila s prtljažnim prostorom većim od 500,0 litara";
+            foreach (Vehicle Ve in ve)
+            {
+                if (Ve.CargoSpace >= 500)
+                {
+                    txt += "\r\n\t - "+Ve.Model+": " +Ve.CargoSpace;
+                }
+            }
+            return  txt ;
+        }
+    }
+    public class Car : Vehicle
+    {
+        string carType;
+
+        public string CarType { get => carType; set => carType = value; }
+
+        public Car()
+        {
+
+        }
+        public Car(string rN, string m, int y, double p, string cT, double cS)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            CarType = cT;
+            CargoSpace = cS;
+        }
+    }
+    public class Van : Vehicle
+    {
+        double height;
+        int noOfSeats;
+
+        public double Height { get => height; set => height = value; }
+        public int NoOfSeats { get => noOfSeats; set => noOfSeats = value; }
+        public Van()
+        {
+
+        }
+        public Van(string rN, string m, int y, double p, double h, int nOS, double cS)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            Height = h;
+            NoOfSeats = nOS;
+            CargoSpace= cS;
+        }
+    }
+    public class Limo : Vehicle
+    {
+        double length;
+        bool miniBar;
+        bool sunRoof;
+
+        public double Length { get => length; set => length = value; }
+        public bool MiniBar { get => miniBar; set => miniBar = value; }
+        public bool SunRoof { get => sunRoof; set => sunRoof = value; }
+        public Limo()
+        {
+
+        }
+        public Limo(string rN, string m, int y, double p, double l, bool mB, bool sR)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            Length = l;
+            SunRoof = mB;
+            sunRoof = sR;
+        }
+    }
+    public class PassengerVan : Van
+    {
+        int noOfPassengers;
+
+        public int NoOfPassengers { get => noOfPassengers; set => noOfPassengers = value; }
+        public PassengerVan() { }
+        public PassengerVan(string rN, string m, int y, double p, double h, int nOS, int nOP)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            Height = h;
+            NoOfSeats = nOS;
+            NoOfPassengers = nOP;
+            CargoSpace = nOP;
+        }
+        public double getPricePerDay()
+        {
+            return Price * 1.1 * 24;
+        }
+    }
+    public class CargoVan : Van
+    {
+        double maxLoad;
+
+        public double MaxLoad { get => maxLoad; set => maxLoad = value; }
+        public CargoVan() { }
+        public CargoVan(string rN, string m, int y, double p, double h, int nOS, double mL)
+        {
+            RegNo = rN;
+            Model = m;
+            Year = y;
+            Price = p;
+            Height = h;
+            NoOfSeats = nOS;
+            MaxLoad = mL;
+            CargoSpace = mL;
+        }
+        public double getPricePerDay()
+        {
+            return Price * 1.5 * 24;
         }
     }
     class Program
@@ -293,9 +482,34 @@ namespace ZadatakZaVijezbu
             competition.addEntry(e2);
             Console.WriteLine("Entry 2 rating: " + e2.getRating());
             Console.WriteLine("Best dessert is: " + competition.getBestDessert().Desse.Name);
-            Person[] e2persons = competition.getInvolvedPeople(e2);
-            foreach(Person p in e2persons)
-                Console.WriteLine(p);
+            Person[] e2persons = new Person[3];
+            e2persons = competition.getInvolvedPeople(e2);
+
+            foreach (Person p in e2persons) {
+                Console.WriteLine(p.ToString());
+            }
+
+            Console.WriteLine("\r\n\r\n ");
+
+            Vehicle v = new Car("DA1234AA", "Renault Clio", 2001, 20, "coupe", 200);
+            Car car = new Car("DA8818BB", "Renault Megane Grandtour", 2007, 25, "caravan", 800);
+            Van van1 = new CargoVan("DA0009PO", "Volkswagen Transporter", 2018, 28, 2, (short)3, 4500);
+            PassengerVan van2 = new PassengerVan("DA6282EA", "IMV 1600", 1978, 35, 2, (short)3, 0);
+            Vehicle limo = new Limo("DA2238AB", "Zastava 750 LE", 1983, 220, 3.2, false, false);
+            Console.WriteLine(v.Model + " price per day: " + v.getPricePerDay());
+            Console.WriteLine(van1.Model + " price per day: " + van1.getPricePerDay());
+            Console.WriteLine(van2.Model + " price per month: " + van2.getPricePerMonth());
+
+            Vehicle[] VL = new Vehicle[5];
+            VL[0] = v;
+            VL[1] = car;
+            VL[2] = van1;
+            VL[3] = van2;
+            VL[4] = limo;
+
+            Vehicle newest = Vehicle.getNewestVehicle(VL);
+            Console.WriteLine("Newest: " + newest.Model + ", " + newest.Year);
+            Console.WriteLine(Vehicle.printAllVehiclesWithCargoSpaceGreaterThan(500, VL));
 
             Console.ReadKey();
         }

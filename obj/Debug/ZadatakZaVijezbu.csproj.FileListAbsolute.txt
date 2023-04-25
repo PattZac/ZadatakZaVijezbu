@@ -5,3 +5,11 @@ C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.cspro
 C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.csproj.CoreCompileInputs.cache
 C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.exe
 C:\Users\korisnik\source\repos\ZadatakZaVijezbu\obj\Debug\ZadatakZaVijezbu.pdb
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\bin\Debug\ZadatakZaVijezbu.exe.config
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\bin\Debug\ZadatakZaVijezbu.exe
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\bin\Debug\ZadatakZaVijezbu.pdb
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\obj\Debug\ZadatakZaVijezbu.csproj.AssemblyReference.cache
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\obj\Debug\ZadatakZaVijezbu.csproj.SuggestedBindingRedirects.cache
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\obj\Debug\ZadatakZaVijezbu.csproj.CoreCompileInputs.cache
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\obj\Debug\ZadatakZaVijezbu.exe
+C:\Users\unkno\Desktop\ZadatakZaVijezbu-main\obj\Debug\ZadatakZaVijezbu.pdb
